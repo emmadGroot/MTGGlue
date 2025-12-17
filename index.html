@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MTGGlue</title>
+</head>
+<body>
+    <template id="cardTemplate">
+        <div class="cardContainer">
+            <div class="card">
+                <input type="text" class="cardName" placeholder="Name">
+                <div class="abilities"></div>
+                <div class="stat"></div>
+            </div>
+        </div>
+    </template>
+
+    <div id="cards">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="addCard" onclick="addCard()">Add Card</button>
+        <div id="container">
+
+        </div>
+    </div>
+    <div id="choice">
+        <button id="cancel" class="choicesButton" onclick="cancel()">Cancel</button>
+        <div id="choices"></div>
+    </div>
+    <input type="text" id="search" placeholder="Search">
+    <button id="done" onclick="done()">Done</button>
+    <div id="buttons"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
