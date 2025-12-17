@@ -63,10 +63,16 @@ function done() {
     if (selected.length >= 3)
     var buttons = document.getElementById("buttons")
     var done = document.getElementById("done")
+    var importButton = document.getElementById("import")
+    var importBox = document.getElementById("stickerInput")
+    var importBR = document.getElementById("importBR")
     var search = document.getElementById("search")
-    buttons.remove()
-    done.remove()
-    search.remove()
+    if (buttons) buttons.remove()
+    if (done) done.remove()
+    if (search) search.remove()
+    if (importButton) importButton.remove()
+    if (importBox) importBox.remove()
+    if (importBR) importBR.remove()
 
     const arrow = document.createElement("button")
     arrow.innerHTML = ">"
@@ -203,6 +209,44 @@ function cancel() {
 function removeSticker(id, reset) {
     document.getElementById(`placedSticker-${id}`).remove()
     document.getElementById("stickerlist").querySelector(`#sticker-${reset}`).style.color = "white"
+}
+
+function importStickers() {
+    selected = []
+    var buttons = document.getElementById("buttons")
+    var importButton = document.getElementById("import")
+    var search = document.getElementById("search")
+    buttons.remove()
+    search.remove()
+    importButton.remove()
+
+    var doneButton = document.getElementById("done")
+    doneButton.onclick = function () {
+        const textarea = document.getElementById('stickerInput')
+        const split = textarea.value.split('\n')
+        const valid = []
+        split.forEach(item => { 
+            stickers.data.forEach(sticker => { 
+                if (item == sticker.Name) valid.push(item)
+            })
+        })
+        if (valid.length >= 3) {
+            selected = valid
+            done()
+        }
+        else return
+    }
+    const br = document.createElement("br")
+    br.id = "importBR"
+    const textField = document.createElement("textarea")
+    textField.id = "stickerInput"
+    textField.placeholder = "Enter a list of stickers..."
+    textField.style.marginTop = "16px"
+    textField.style.width = "80%"
+    textField.style.height = "200px"
+
+    document.body.appendChild(br)
+    document.body.appendChild(textField)
 }
 
 doStuff()
