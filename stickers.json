@@ -607,7 +607,7 @@
         },
         {
           "Cost": 3,
-          "Text": "MagecraftWhenever you cast or copy an instant or sorcery spell, draw a card."
+          "Text": "Magecraft - Whenever you cast or copy an instant or sorcery spell, draw a card."
         }
       ],
       "Stats": [
@@ -745,7 +745,7 @@
         },
         {
           "Cost": 3,
-          "Text": "ThresholdAs long as seven or more cards are in your graveyard, this creature gets +4/+0 and has trample."
+          "Text": "Threshold - As long as seven or more cards are in your graveyard, this creature gets +4/+0 and has trample."
         }
       ],
       "Stats": [
@@ -948,7 +948,7 @@
       "Abilities": [
         {
           "Cost": 2,
-          "Text": "HellbentThis creature gets +3/+3 as long as you have no cards in hand."
+          "Text": "Hellbent - This creature gets +3/+3 as long as you have no cards in hand."
         },
         {
           "Cost": 4,
@@ -971,7 +971,7 @@
       "Abilities": [
         {
           "Cost": 2,
-          "Text": "HeroicWhenever you cast a spell that targets this permanent, put two +1/+1 counters on it."
+          "Text": "Heroic - Whenever you cast a spell that targets this permanent, put two +1/+1 counters on it."
         },
         {
           "Cost": 3,
@@ -994,7 +994,7 @@
       "Abilities": [
         {
           "Cost": 2,
-          "Text": "LandfallWhenever a land enters under your control, put a +1/+1 counter on this permanent."
+          "Text": "Landfall - Whenever a land enters under your control, put a +1/+1 counter on this permanent."
         },
         {
           "Cost": 4,
@@ -1021,7 +1021,7 @@
         },
         {
           "Cost": 3,
-          "Text": "MetalcraftThis permanent has protection from noncreature permanents as long as you control three or more artifacts."
+          "Text": "Metalcraft - This permanent has protection from noncreature permanents as long as you control three or more artifacts."
         }
       ],
       "Stats": [
@@ -1044,7 +1044,7 @@
         },
         {
           "Cost": 4,
-          "Text": "MorbidAt the beginning of each end step, if a creature died this turn and this permanent is a creature, put a -1/-1 counter on this permanent and draw a card."
+          "Text": "Morbid - At the beginning of each end step, if a creature died this turn and this permanent is a creature, put a -1/-1 counter on this permanent and draw a card."
         }
       ],
       "Stats": [
