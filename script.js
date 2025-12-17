@@ -3,6 +3,8 @@ let selected = []
 let searchPrompt = ""
 let cardsHidden = true
 let cardCount = 0;
+let placedStickerCount = 0
+let availableStickers = []
 
 const search = document.getElementById("search")
 
@@ -96,16 +98,20 @@ function done() {
             nameDiv.innerHTML = item.Name
             stuff.appendChild(nameDiv)
             item.Abilities.forEach(ability => {
+                availableStickers.push(ability.text)
                 const abilityDiv = document.createElement("div")
-                abilityDiv.innerHTML = `<button onclick="addSticker('ability', '${ability.Text}')">` + ability.Cost + "</button>" + " - " + ability.Text
+                abilityDiv.innerHTML = `<button onclick="addSticker('ability', '${ability.Text}', '${availableStickers.length}')">` + ability.Cost + "</button>" + " - " + ability.Text
+                abilityDiv.id = `sticker-${availableStickers.length}`
                 const br = document.createElement("br")
                 stuff.appendChild(br)
                 stuff.appendChild(abilityDiv)
             })
             
             item.Stats.forEach(stat => {
+                availableStickers.push(stat.text)
                 const statDiv = document.createElement("div")
-                statDiv.innerHTML = `<button onclick="addSticker('stat', '${stat.Text}')">` + stat.Cost + "</button>" + " - " + stat.Text
+                statDiv.innerHTML = `<button onclick="addSticker('stat', '${stat.Text}', '${availableStickers.length}')">` + stat.Cost + "</button>" + " - " + stat.Text
+                statDiv.id = `sticker-${availableStickers.length}`
                 const br = document.createElement("br")
                 stuff.appendChild(br)
                 stuff.appendChild(statDiv)
@@ -122,16 +128,18 @@ function done() {
     document.body.appendChild(stuff)
 }
 
-function addSticker(type, text) {
+function addSticker(type, text, stickerID) {
+    document.getElementById("stickerlist").querySelector(`#sticker-${stickerID}`).style.color = "gray"
+    placedStickerCount++
     if (cardCount == 1) {
         const card = document.getElementById("card-1")
         if (type == "ability") {
             const ability = card.querySelector(".abilities")
-            ability.innerHTML += text + "<br><br>"
+            ability.innerHTML += `<div id="placedSticker-${placedStickerCount}" onclick="removeSticker('${placedStickerCount}', '${stickerID}')">` + text + "<br><br></div>"
         }
         else {
             const stat = card.querySelector(".stat")
-            stat.innerHTML = text
+            stat.innerHTML = `<div id="placedSticker-${placedStickerCount}" onclick="removeSticker('${placedStickerCount}', '${stickerID}')">` + text + "</div>"
         }
     }
     else {
@@ -147,11 +155,11 @@ function addSticker(type, text) {
                 const card = document.getElementById(`card-${index + 1}`)
                 if (type == "ability") {
                     const ability = card.querySelector(".abilities")
-                    ability.innerHTML += text + "<br><br>"
+                    ability.innerHTML += `<div id="placedSticker-${placedStickerCount}" onclick="removeSticker('${placedStickerCount}', '${stickerID}')">` + text + "<br><br></div>"
                 }
                 else {
                     const stat = card.querySelector(".stat")
-                    stat.innerHTML = text
+                    stat.innerHTML = `<div id="placedSticker-${placedStickerCount}" onclick="removeSticker('${placedStickerCount}', '${stickerID}')">` + text + "</div>"
                 }
                 cancel()
             }
@@ -159,7 +167,6 @@ function addSticker(type, text) {
             const br = document.createElement("br")
             choices.appendChild(br)
         })
-
     }
 }
 
@@ -191,6 +198,11 @@ function cancel() {
     const choice = document.getElementById("choice")
     choice.classList.toggle("active")
     choice.querySelector("#choices").innerHTML = ""
+}
+
+function removeSticker(id, reset) {
+    document.getElementById(`placedSticker-${id}`).remove()
+    document.getElementById("stickerlist").querySelector(`#sticker-${reset}`).style.color = "white"
 }
 
 doStuff()
