@@ -242,16 +242,17 @@ function importStickers() {
         else return
     }
     const br = document.createElement("br")
-    br.id = "importBR"
     const textField = document.createElement("textarea")
     textField.id = "stickerInput"
     textField.placeholder = "Enter a list of stickers..."
-    textField.style.marginTop = "16px"
+    textField.style.marginTop = "4px"
     textField.style.width = "80%"
     textField.style.height = "200px"
 
-    document.body.appendChild(br)
-    document.body.appendChild(textField)
+    const toRemove = document.getElementById("toRemove")
+
+    toRemove.appendChild(br)
+    toRemove.appendChild(textField)
 }
 
 doStuff()
