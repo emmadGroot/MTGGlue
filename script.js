@@ -246,9 +246,6 @@ function importStickers() {
     const textField = document.createElement("textarea")
     textField.id = "stickerInput"
     textField.placeholder = "Enter a list of stickers..."
-    textField.style.marginTop = "4px"
-    textField.style.width = "80%"
-    textField.style.height = "200px"
 
     const toRemove = document.getElementById("toRemove")
 
