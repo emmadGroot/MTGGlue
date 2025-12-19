@@ -78,7 +78,6 @@ function done() {
     arrow.innerHTML = ">"
     arrow.style.position = "fixed"
     arrow.style.zIndex = "1000"
-    arrow.classList.add("button")
     arrow.onclick = function () {
         const cards = document.getElementById("cards")
         if (cardsHidden) {
