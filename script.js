@@ -5,6 +5,7 @@ let cardsHidden = true
 let cardCount = 0;
 let placedStickerCount = 0
 let availableStickers = []
+let tickets = 0
 
 const search = document.getElementById("search")
 
@@ -22,6 +23,11 @@ async function fetchStickers() {
             stickers = data
         })
     return response
+}
+
+function getTickets(value) {
+    tickets += value
+    document.getElementById("ticketCounter").innerHTML = tickets
 }
 
 function toggleSticker(id) {
@@ -91,6 +97,10 @@ function done() {
     }
     document.body.appendChild(arrow)
 
+    const template = document.getElementById("ticketTemplate");
+    const clone = template.content.cloneNode(true);
+    document.body.appendChild(clone)
+
     const shuffled = selected.sort(() => 0.5 - Math.random());
     let chosen = shuffled.slice(0, 3);
     const stuff = document.createElement("div")
@@ -105,7 +115,7 @@ function done() {
             item.Abilities.forEach(ability => {
                 availableStickers.push(ability.text)
                 const abilityDiv = document.createElement("div")
-                abilityDiv.innerHTML = `<button onclick="addSticker('ability', '${ability.Text}', '${availableStickers.length}')">` + ability.Cost + "</button>" + " - " + ability.Text
+                abilityDiv.innerHTML = `<button onclick="addSticker('ability', '${ability.Text}', '${availableStickers.length}', '${ability.Cost}')">` + ability.Cost + "</button>" + " - " + ability.Text
                 abilityDiv.id = `sticker-${availableStickers.length}`
                 const br = document.createElement("br")
                 stuff.appendChild(br)
@@ -115,7 +125,7 @@ function done() {
             item.Stats.forEach(stat => {
                 availableStickers.push(stat.text)
                 const statDiv = document.createElement("div")
-                statDiv.innerHTML = `<button onclick="addSticker('stat', '${stat.Text}', '${availableStickers.length}')">` + stat.Cost + "</button>" + " - " + stat.Text
+                statDiv.innerHTML = `<button onclick="addSticker('stat', '${stat.Text}', '${availableStickers.length}', '${stat.Cost}')">` + stat.Cost + "</button>" + " - " + stat.Text
                 statDiv.id = `sticker-${availableStickers.length}`
                 const br = document.createElement("br")
                 stuff.appendChild(br)
@@ -133,7 +143,9 @@ function done() {
     document.body.appendChild(stuff)
 }
 
-function addSticker(type, text, stickerID) {
+function addSticker(type, text, stickerID, ticketCost) {
+    if (tickets < ticketCost) return
+    getTickets(-ticketCost)
     document.getElementById(`sticker-${stickerID}`).style.color = "gray"
     placedStickerCount++
     if (cardCount == 1) {

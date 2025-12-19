@@ -16,6 +16,17 @@
             </div>
         </div>
     </template>
+    <template id="ticketTemplate">
+        <div id="ticketUI">
+            <button class="stepper-btn" onclick="getTickets(-1)">
+                -
+            </button>
+            <span class="stepper-value" id="ticketCounter">0</span>
+            <button class="stepper-btn" onclick="getTickets(1)">
+                +
+            </button>
+        </div>
+    </template>
 
     <div id="cards">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
