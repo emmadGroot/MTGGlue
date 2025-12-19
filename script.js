@@ -68,25 +68,8 @@ async function doStuff() {
 
 function done() {
     if (selected.length < 3) return
-    var buttons = document.getElementById("buttons")
-    var done = document.getElementById("done")
-    var importButton = document.getElementById("import")
-    var importBox = document.getElementById("stickerInput")
-    var importBR = document.getElementById("importBR")
-    var search = document.getElementById("search")
-    var useTickets = document.getElementById("useTickets")
-    var useTicketsLabel = document.getElementById("useTicketsLabel")
-    if (buttons) buttons.remove()
-    if (done) done.remove()
-    if (search) search.remove()
-    if (importButton) importButton.remove()
-    if (importBox) importBox.remove()
-    if (importBR) importBR.remove()
-    if (useTickets) {
-        usingTickets = useTickets.checked
-        useTickets.remove()
-    }
-    if (useTicketsLabel) useTicketsLabel.remove()
+    usingTickets = document.getElementById("useTickets").checked
+    document.getElementById("toRemove").remove()
 
     const arrow = document.createElement("button")
     arrow.innerHTML = ">"

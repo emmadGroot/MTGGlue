@@ -39,12 +39,14 @@
         <button id="cancel" class="choicesButton" onclick="cancel()">Cancel</button>
         <div id="choices"></div>
     </div>
-    <input type="checkbox" id="useTickets" checked>
-    <label for="useTickets" id="useTicketsLabel"> Use Ticket Counter</label><br>
-    <input type="text" id="search" placeholder="Search">
-    <button id="done" onclick="done()">Done</button>
-    <button id="import" onclick="importStickers()">Import</button>
-    <div id="buttons"></div>
+    <div id="toRemove">
+        <input type="checkbox" id="useTickets" checked>
+        <label for="useTickets" id="useTicketsLabel"> Use Ticket Counter</label><br>
+        <input type="text" id="search" placeholder="Search">
+        <button id="done" onclick="done()">Done</button>
+        <button id="import" onclick="importStickers()">Import</button>
+        <div id="buttons"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
