@@ -6,6 +6,7 @@ let cardCount = 0;
 let placedStickerCount = 0
 let availableStickers = []
 let tickets = 0
+let usingTickets = true
 
 const search = document.getElementById("search")
 
@@ -66,19 +67,26 @@ async function doStuff() {
 }
 
 function done() {
-    if (selected.length >= 3)
+    if (selected.length < 3) return
     var buttons = document.getElementById("buttons")
     var done = document.getElementById("done")
     var importButton = document.getElementById("import")
     var importBox = document.getElementById("stickerInput")
     var importBR = document.getElementById("importBR")
     var search = document.getElementById("search")
+    var useTickets = document.getElementById("useTickets")
+    var useTicketsLabel = document.getElementById("useTicketsLabel")
     if (buttons) buttons.remove()
     if (done) done.remove()
     if (search) search.remove()
     if (importButton) importButton.remove()
     if (importBox) importBox.remove()
     if (importBR) importBR.remove()
+    if (useTickets) {
+        usingTickets = useTickets.checked
+        useTickets.remove()
+    }
+    if (useTicketsLabel) useTicketsLabel.remove()
 
     const arrow = document.createElement("button")
     arrow.innerHTML = ">"
@@ -97,9 +105,12 @@ function done() {
     }
     document.body.appendChild(arrow)
 
-    const template = document.getElementById("ticketTemplate");
-    const clone = template.content.cloneNode(true);
-    document.body.appendChild(clone)
+    if (usingTickets) {
+        const template = document.getElementById("ticketTemplate");
+        const clone = template.content.cloneNode(true);
+        document.body.appendChild(clone)
+    }
+    
 
     const shuffled = selected.sort(() => 0.5 - Math.random());
     let chosen = shuffled.slice(0, 3);
@@ -144,8 +155,8 @@ function done() {
 }
 
 function addSticker(type, text, stickerID, ticketCost) {
-    if (tickets < ticketCost) return
-    getTickets(-ticketCost)
+    if (tickets < ticketCost && usingTickets) return
+    if (usingTickets) getTickets(-ticketCost)
     document.getElementById(`sticker-${stickerID}`).style.color = "gray"
     placedStickerCount++
     if (cardCount == 1) {
