@@ -135,7 +135,7 @@ function done() {
 }
 
 function addSticker(type, text, stickerID) {
-    document.getElementById("stickerlist").querySelector(`#sticker-${stickerID}`).style.color = "gray"
+    document.getElementById(`sticker-${stickerID}`).style.color = "gray"
     placedStickerCount++
     if (cardCount == 1) {
         const card = document.getElementById("card-1")
@@ -149,9 +149,9 @@ function addSticker(type, text, stickerID) {
         }
     }
     else {
-        const choice = document.getElementById("choice")
-        choice.classList.toggle("active")
-        const choices = choice.querySelector("#choices")
+        const choiceMenu = document.getElementById("choiceMenu")
+        choiceMenu.classList.toggle("active")
+        const choices = document.getElementById("choices")
         const names = getCardNames()
         names.forEach((item, index) => { 
             const button = document.createElement("button")
@@ -201,14 +201,14 @@ function getCardNames() {
 }
 
 function cancel() {
-    const choice = document.getElementById("choice")
+    const choice = document.getElementById("choiceMenu")
     choice.classList.toggle("active")
-    choice.querySelector("#choices").innerHTML = ""
+    document.getElementById("choices").innerHTML = ""
 }
 
 function removeSticker(id, reset) {
     document.getElementById(`placedSticker-${id}`).remove()
-    document.getElementById("stickerlist").querySelector(`#sticker-${reset}`).style.color = "white"
+    document.getElementById(`sticker-${reset}`).style.color = "white"
 }
 
 function importStickers() {
