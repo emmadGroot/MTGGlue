@@ -117,7 +117,7 @@ button:hover {
 }
 
 .card {
-    padding: 5px;
+    padding: 16px;
     margin: auto;
     background-color: var(--background-light);
     border-radius: 50px;
