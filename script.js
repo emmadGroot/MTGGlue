@@ -42,7 +42,7 @@ function toggleSelectedStickerCheckbox(id) {
 }
 
 async function loadStickerCheckboxes() {
-    await fetchStickers()
+    if (!stickers) await fetchStickers()
     var buttons = document.getElementById("buttons")
     buttons.innerHTML = ""
     
