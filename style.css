@@ -22,8 +22,12 @@ button:hover {
     cursor: pointer;
 }
 
+#useTickets {
+    margin-bottom: 8px;
+}
+
 #stickerInput {
-    margin-top: 4px;
+    margin-top: 8px;
     width: 80%;
     height: 200px;
 }
