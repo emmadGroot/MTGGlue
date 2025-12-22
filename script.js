@@ -12,7 +12,7 @@ const search = document.getElementById("search")
 
 search.addEventListener('input', (event) => {
     searchPrompt = event.target.value
-    doStuff()
+    loadStickerCheckboxes()
 })
 
 async function fetchStickers() {
@@ -31,7 +31,7 @@ function getTickets(value) {
     document.getElementById("ticketCounter").innerHTML = tickets
 }
 
-function toggleSticker(id) {
+function toggleSelectedStickerCheckbox(id) {
     var index = selected.indexOf(id)
     if (index !== -1) {
         selected.splice(index, 1)
@@ -41,7 +41,7 @@ function toggleSticker(id) {
     }
 }
 
-async function doStuff() {
+async function loadStickerCheckboxes() {
     await fetchStickers()
     var buttons = document.getElementById("buttons")
     buttons.innerHTML = ""
@@ -52,7 +52,7 @@ async function doStuff() {
             checkbox.type = "checkbox"
             checkbox.id = item.Name
             checkbox.addEventListener("change", function () {
-                toggleSticker(this.id)
+                toggleSelectedStickerCheckbox(this.id)
             })
             if (selected.indexOf(checkbox.id) >= 0) checkbox.checked = true
             const label = document.createElement("label")
@@ -253,5 +253,5 @@ function importStickers() {
     toRemove.appendChild(textField)
 }
 
-doStuff()
+loadStickerCheckboxes()
 addCard()
