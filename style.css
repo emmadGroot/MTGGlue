@@ -97,6 +97,10 @@ button:hover {
     margin-top: 8px;
 }
 
+#addCard {
+    margin-left: 32px;
+}
+
 .choicesButton {
     margin: 5px;
 }
