@@ -40,6 +40,7 @@ button:hover {
     position: fixed;
     right: 32px;
     z-index: 1000;
+    opacity: 80%;
 }
 
 .stepper-btn {
