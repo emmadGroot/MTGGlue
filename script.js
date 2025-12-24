@@ -139,10 +139,10 @@ function done() {
 
 function addSticker(type, text, stickerID, ticketCost) {
     if (tickets < ticketCost && usingTickets) return
-    document.getElementById(`sticker-${stickerID}`).style.color = "gray"
     placedStickerCount++
     if (cardCount == 1) {
         if (usingTickets) getTickets(-ticketCost)
+        document.getElementById(`sticker-${stickerID}`).style.color = "gray"
         const card = document.getElementById("card-1")
         if (type == "ability") {
             const ability = card.querySelector(".abilities")
@@ -164,6 +164,7 @@ function addSticker(type, text, stickerID, ticketCost) {
             button.classList.add("choicesButton")
             button.onclick = function () {
                 if (usingTickets) getTickets(-ticketCost)
+                document.getElementById(`sticker-${stickerID}`).style.color = "gray"
                 const card = document.getElementById(`card-${index + 1}`)
                 if (type == "ability") {
                     const ability = card.querySelector(".abilities")
@@ -202,7 +203,6 @@ function getCardNames() {
         const text = card.querySelector(".cardName").value
         names.push(text)
     }
-    console.log(names)
     return names
 }
 
