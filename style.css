@@ -133,3 +133,13 @@ button:hover {
 .cardName {
     text-align: center;
 }
+
+#sourceButton {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+}
+
+#github {
+    width: 32px;
+}
