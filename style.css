@@ -22,6 +22,10 @@ button:hover {
     cursor: pointer;
 }
 
+#search {
+    margin-left: 4px;
+}
+
 #useTickets {
     margin-bottom: 8px;
 }
